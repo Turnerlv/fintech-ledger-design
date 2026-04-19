@@ -28,3 +28,14 @@ GENERATED ALWAYS AS (
         ELSE amount 
     END
 ) STORED;
+
+
+-- For cascading effects on foreign keys -- 
+
+ALTER TABLE salaries DROP CONSTRAINT fk_employee;
+
+ALTER TABLE salaries 
+ADD CONSTRAINT fk_employee
+FOREIGN KEY (emp_id) 
+REFERENCES employees(id) 
+ON DELETE CASCADE;
